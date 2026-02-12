@@ -101,6 +101,8 @@ public class TileProblem implements org.cwilt.search.search.SearchProblem, Seria
 		double value = 0;
 
 		//cache where each tile is in state 1 so you don't have to look for it later.
+		//
+		// I think this stores locations, indexed by tile number...except it's 0-origin indexed.
 		char[] locations = new char[across * down];
 		for(char i = 0; i < across * down; i++){
 			locations[s1.b.c[i]] = i;

@@ -19,6 +19,7 @@ public class TileState extends org.cwilt.search.search.SearchState implements Se
         public final char[] c;
 
         public TileBoard(char[] c) {
+            // I think this stores tile numbers, indexed by location
             this.c = c;
         }
 

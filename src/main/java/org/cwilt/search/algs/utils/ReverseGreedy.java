@@ -17,6 +17,7 @@ public class ReverseGreedy extends SearchAlgorithm {
 		return closed;
 	}
 
+	// for each LM, record its hwm, and its size (num nodes)
 	private static final class NodeReservoir {
 		@Override
 		public int hashCode() {
@@ -29,6 +30,11 @@ public class ReverseGreedy extends SearchAlgorithm {
 			return result;
 		}
 
+		// if two LMs have same count (size) and hwm, then consider them to be equal
+		//
+		// is equality used for deduplication? not during recording, because each is added to an ArrayList, not a hashtable.
+		//
+		// what about in post-processing? yes, deduped in post-processing based on hashCode and equals: same hwm and same count.
 		@Override
 		public boolean equals(Object obj) {
 			if (this == obj)
@@ -108,24 +114,29 @@ public class ReverseGreedy extends SearchAlgorithm {
 	}
 
 	private void evaluateNode(SearchNode n) {
+		// hwStack empty: initialization
+		// stack < n: not in LM
 		if (highwaterStack.isEmpty() || highwaterStack.peek().mark < n.getH()) {
 			highwaterStack.push(new HighwaterMark(n.getH(), this.l
 					.getExpansions()));
 			hOutside.put(n.getH(), new AtomicInteger(0));
 			current = null;
+			// stack > n: in LM
 		} else if (highwaterStack.peek().mark > n.getH()) {
 			if (current == null) {
 				current = new NodeReservoir(highwaterStack.peek().mark);
 				nodeReservoirs.add(current);
 			}
 			current.incrementNodes();
+			// plateau
 		} else if (highwaterStack.peek().mark == n.getH()) {
 			// want to ignore the nodes that are on the same level as the
 			// current highwater mark.
 			current = null;
 		}
 		{
-			double hw = highwaterStack.peek().mark;
+			// only record relative difference between h and hwm [0, inf)
+ 			double hw = highwaterStack.peek().mark;
 			Double hd = hw - n.getH();
 			AtomicInteger i = hDiffCounts.get(hd);
 			if (i == null) {
@@ -137,11 +148,13 @@ public class ReverseGreedy extends SearchAlgorithm {
 		{
 			Double h = n.getH();
 			AtomicInteger i = hOutside.get(h);
+			// if have not yet recorded this non-LM h value, record it
 			if (i == null) {
 				i = new AtomicInteger(0);
 				hOutside.put(h, i);
 			}
 			double hw = highwaterStack.peek().mark;
+			// ???????
 			if (h < hw) {
 				i.incrementAndGet();
 			}
@@ -149,6 +162,7 @@ public class ReverseGreedy extends SearchAlgorithm {
 
 		{
 			Double h = n.getH();
+			// if have not yet recorded this h value (among all h values, LM and non-LM), record it
 			AtomicInteger i = hCounts.get(h);
 			if (i == null) {
 				hCounts.put(h, new AtomicInteger(1));
@@ -157,6 +171,7 @@ public class ReverseGreedy extends SearchAlgorithm {
 			}
 		}
 		{
+			// probably for computing heuristic error
 			ErrorPair epNew = new ErrorPair(n.getH(),
 					highwaterStack.peek().mark);
 			AtomicInteger ct = errorPairs.get(epNew);
@@ -215,6 +230,7 @@ public class ReverseGreedy extends SearchAlgorithm {
 	@Override
 	public ArrayList<SearchState> solve() {
 
+		// search backwards from ALL goals
 		ArrayList<SearchState> goals = prob.getGoals();
 		for (SearchState goal : goals) {
 			SearchNode first = SearchNode.makeInitial(goal);
@@ -229,6 +245,7 @@ public class ReverseGreedy extends SearchAlgorithm {
 				ArrayList<? extends SearchNode> children = next.reverseExpand();
 				l.incrExp();
 				for (SearchNode n : children) {
+					// check closed at generation; if not in closed, add to closed and to open
 					SearchNode incumbent = closed.get(n.getState().getKey());
 					if (incumbent == null) {
 						open.add(n);
@@ -336,6 +353,9 @@ public class ReverseGreedy extends SearchAlgorithm {
 		int maxReservoir = 0;
 		HashMap<NodeReservoir, AtomicInteger> res = new HashMap<NodeReservoir, AtomicInteger>();
 		for (NodeReservoir n : nodeReservoirs) {
+			// deduplicate LMs that have same hwm and count
+			//
+			// only way to know different is to compare their states, though
 			AtomicInteger c = res.get(n);
 			if (c == null) {
 				c = new AtomicInteger(0);
