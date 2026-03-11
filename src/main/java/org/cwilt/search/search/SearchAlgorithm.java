@@ -10,6 +10,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.io.IOException;
 
 public abstract class SearchAlgorithm implements Runnable, Cloneable {
 
@@ -160,6 +161,7 @@ public abstract class SearchAlgorithm implements Runnable, Cloneable {
 					new Double(incumbent.getCost()).toString());
 			printPair(ps, "final sol length",
 					new Integer(incumbent.getLength()));
+			printSolution(ps, incumbent.reconstructPath());
 		} else {
 			printPair(ps, "found solution", "no");
 			printPair(ps, "final sol cost", "inf");
@@ -185,6 +187,15 @@ public abstract class SearchAlgorithm implements Runnable, Cloneable {
 		// System.out.println(n);
 		// n = n.getParent();
 		// }
+	}
+
+	private void printSolution(PrintStream ps, ArrayList<SearchState> soln) {
+		ps.println(" ==== printing solution ====");
+		ps.printf("%d states:\n", soln.size());
+		for (SearchState s : soln) {
+			ps.println(s);
+		}
+		ps.println(" ==== end solution ====");
 	}
 
 }

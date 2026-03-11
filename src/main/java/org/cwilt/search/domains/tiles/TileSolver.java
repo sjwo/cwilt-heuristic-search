@@ -78,7 +78,6 @@ public class TileSolver extends SearchAlgorithm {
 
 			initialAbs = (AbstractedTileState) a.getIncumbent().getGoal().getState();
 			finalPath.remove(finalPath.size() - 1);
-			
 		}
 		
 		for(int i = 0; i < initialState.prob.getAcross() * initialState.prob.getDown(); i++){
