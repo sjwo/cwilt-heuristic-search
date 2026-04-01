@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.asteroids.planner;
+package org.cwilt.search.domains.asteroids.planner;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -7,7 +7,13 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Set;import org.cwilt.search.domains.asteroids.Asteroid;import org.cwilt.search.domains.asteroids.BasicShip;import org.cwilt.search.domains.asteroids.PhaserPulse;import org.cwilt.search.domains.asteroids.Ship;import org.cwilt.search.search.SearchState;
+import java.util.Set;
+
+import org.cwilt.search.domains.asteroids.Asteroid;
+import org.cwilt.search.domains.asteroids.BasicShip;
+import org.cwilt.search.domains.asteroids.PhaserPulse;
+import org.cwilt.search.domains.asteroids.Ship;
+import org.cwilt.search.search.SearchState;
 public class AsteroidState extends SearchState {
 	public double getScore(){
 		return score;

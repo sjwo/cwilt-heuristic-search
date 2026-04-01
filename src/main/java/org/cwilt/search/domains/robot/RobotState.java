@@ -1,8 +1,10 @@
-package org.cwilt.search.domains.robot;
+package org.cwilt.search.domains.robot;
 import java.util.ArrayList;
 
-import org.cwilt.search.algs.basic.bestfirst.AStar;import org.cwilt.search.algs.experimental.bidirectional.DHAddAstar;
-import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchState;
+import org.cwilt.search.algs.basic.bestfirst.AStar;
+import org.cwilt.search.algs.experimental.bidirectional.DHAddAstar;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchState;
 public class RobotState extends SearchState {
 
 	public int indexLocation() {

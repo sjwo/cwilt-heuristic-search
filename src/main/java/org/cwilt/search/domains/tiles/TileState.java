@@ -1,5 +1,13 @@
-package org.cwilt.search.domains.tiles;
-import java.io.IOException;import java.io.Serializable;import java.util.ArrayList;import java.util.Arrays;import org.cwilt.search.algs.basic.bestfirst.WAStar;import org.cwilt.search.search.SearchState;import org.cwilt.search.utils.TemporaryLoadAndWritePath;import org.cwilt.search.utils.basic.Permutation;
+package org.cwilt.search.domains.tiles;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.cwilt.search.algs.basic.bestfirst.WAStar;
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.utils.TemporaryLoadAndWritePath;
+import org.cwilt.search.utils.basic.Permutation;
 public class TileState extends org.cwilt.search.search.SearchState implements Serializable {
     public double distTo(SearchState other) {
         TileState o = (TileState) other;

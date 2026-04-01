@@ -1,10 +1,17 @@
-package org.cwilt.search.algs.basic;
+package org.cwilt.search.algs.basic;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.HashMap;
 
-import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchAlgorithm;import org.cwilt.search.search.SearchNode;import org.cwilt.search.search.SearchProblem;import org.cwilt.search.search.SearchState;import org.cwilt.search.search.Solution;import org.cwilt.search.utils.basic.Heapable;import org.cwilt.search.utils.basic.MinHeap;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchAlgorithm;
+import org.cwilt.search.search.SearchNode;
+import org.cwilt.search.search.SearchProblem;
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.Solution;
+import org.cwilt.search.utils.basic.Heapable;
+import org.cwilt.search.utils.basic.MinHeap;
 public class BIDAStarManzini extends org.cwilt.search.search.SearchAlgorithm {
 	public final int perimeterSize;
 

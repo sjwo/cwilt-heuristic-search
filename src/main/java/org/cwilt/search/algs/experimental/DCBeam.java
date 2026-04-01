@@ -1,12 +1,14 @@
-package org.cwilt.search.algs.experimental;
+package org.cwilt.search.algs.experimental;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import org.cwilt.search.algs.basic.Beam;
-import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchNode;import org.cwilt.search.utils.basic.Utils;
+import org.cwilt.search.algs.basic.Beam;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchNode;
+import org.cwilt.search.utils.basic.Utils;
 /**
  * DCBeam
  * 

@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.hanoi;
+package org.cwilt.search.domains.hanoi;
 /**
  * 
  * --time 600.000000 --probargs /home/aifs2/cmo66/cjava/santa/hanoipdb9  --type hanoi --problem /home/aifs2/group/data/hanoi/instance/4/12/2 --alg astar --rest 0
@@ -7,7 +7,17 @@ package org.cwilt.search.domains.hanoi;
  * 
  */
 
-import java.io.BufferedReader;import java.io.DataInputStream;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStreamReader;import java.io.PrintStream;import java.util.ArrayList;import org.cwilt.search.search.SearchState;import org.cwilt.search.search.SearchState.Child;import org.cwilt.search.utils.TemporaryLoadAndWritePath;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.util.ArrayList;
+
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.SearchState.Child;
+import org.cwilt.search.utils.TemporaryLoadAndWritePath;
 public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 	final int nDisks;
 	final int nPegs;

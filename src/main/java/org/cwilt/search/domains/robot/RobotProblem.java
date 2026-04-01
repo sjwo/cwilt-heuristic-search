@@ -1,5 +1,32 @@
-package org.cwilt.search.domains.robot;
-import java.awt.Color;import java.awt.Graphics2D;import java.awt.Rectangle;import java.awt.image.BufferedImage;import java.io.BufferedReader;import java.io.DataInputStream;import java.io.File;import java.io.FileInputStream;import java.io.IOException;import java.io.InputStreamReader;import java.io.PrintStream;import java.text.ParseException;import java.util.ArrayList;import java.util.HashMap;import java.util.Map.Entry;import java.util.PriorityQueue;import java.util.Scanner;import java.util.concurrent.atomic.AtomicInteger;import javax.imageio.ImageIO;import org.cwilt.search.algs.experimental.bidirectional.HAddAStar;import org.cwilt.search.algs.experimental.bidirectional.HAddAStar.HAddSearchNode;import org.cwilt.search.domains.car.GridCell;import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchAlgorithm;import org.cwilt.search.search.SearchNode;import org.cwilt.search.search.SearchState;
+package org.cwilt.search.domains.robot;
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.PriorityQueue;
+import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.imageio.ImageIO;
+
+import org.cwilt.search.algs.experimental.bidirectional.HAddAStar;
+import org.cwilt.search.algs.experimental.bidirectional.HAddAStar.HAddSearchNode;
+import org.cwilt.search.domains.car.GridCell;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchAlgorithm;
+import org.cwilt.search.search.SearchNode;
+import org.cwilt.search.search.SearchState;
 public class RobotProblem implements org.cwilt.search.search.SearchProblem {
 	/**
 	 * 
@@ -162,7 +189,8 @@ public class RobotProblem implements org.cwilt.search.search.SearchProblem {
 			this.start = new RobotState(this, startX, startY, startH, 0);
 			this.goal = new RobotState(this, endX, endY, endH, 0);
 
-		} else {			br.close();
+		} else {
+			br.close();
 			s.close();
 			throw new ParseException(
 					"Trying to parse the robot instance, doesn't look like grid or robot",
@@ -176,7 +204,8 @@ public class RobotProblem implements org.cwilt.search.search.SearchProblem {
 		// this.printHeuristic();
 
 		// System.err.println(start);
-		// System.err.println(goal);		br.close();
+		// System.err.println(goal);
+		br.close();
 		s.close();
 	}
 
@@ -284,7 +313,8 @@ public class RobotProblem implements org.cwilt.search.search.SearchProblem {
 
 		// System.err.println(start);
 		// System.err.println(goal);
-		br.close();		s.close();
+		br.close();
+		s.close();
 
 	}
 

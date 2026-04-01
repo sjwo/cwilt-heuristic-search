@@ -1,4 +1,4 @@
-package org.cwilt.search.utils.experimental;
+package org.cwilt.search.utils.experimental;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -6,7 +6,10 @@ import java.util.Random;
 
 import org.junit.Test;
 
-import org.cwilt.search.utils.basic.MinHeap;import org.cwilt.search.utils.basic.MinMaxHeap;import org.cwilt.search.utils.basic.PairingHeap;import org.cwilt.search.utils.experimental.BinHeapTest.BHT;
+import org.cwilt.search.utils.basic.MinHeap;
+import org.cwilt.search.utils.basic.MinMaxHeap;
+import org.cwilt.search.utils.basic.PairingHeap;
+import org.cwilt.search.utils.experimental.BinHeapTest.BHT;
 public class DBinHeapTest {
 	MinHeap<BHT> mh = new MinHeap<BHT>(new BHT.FGComparator());
 	DBinHeap<BHT> db = new DBinHeap<BHT>();

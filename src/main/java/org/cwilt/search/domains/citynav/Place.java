@@ -1,6 +1,10 @@
-package org.cwilt.search.domains.citynav;
+package org.cwilt.search.domains.citynav;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;import org.cwilt.search.domains.citynav.City.Highway;import org.cwilt.search.domains.citynav.Citynav.HEURISTIC_TYPE;import org.cwilt.search.search.SearchState;
+import java.util.ArrayList;
+
+import org.cwilt.search.domains.citynav.City.Highway;
+import org.cwilt.search.domains.citynav.Citynav.HEURISTIC_TYPE;
+import org.cwilt.search.search.SearchState;
 public class Place extends SearchState {
 	private final City city;
 	private final Point2D.Double location;

@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.kiva.map;
+package org.cwilt.search.domains.kiva.map;
 import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;

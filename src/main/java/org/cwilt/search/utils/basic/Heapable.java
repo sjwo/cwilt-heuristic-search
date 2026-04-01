@@ -5,7 +5,7 @@
  *         Artificial Intelligence Research Group
  * 
  */
-package org.cwilt.search.utils.basic;
+package org.cwilt.search.utils.basic;
 public interface Heapable {
 	public static final int NO_POS = -1;
 	public int getHeapIndex();

@@ -1,8 +1,12 @@
-package org.cwilt.search.domains.multiagent.solvers.autoqueue;
+package org.cwilt.search.domains.multiagent.solvers.autoqueue;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;import org.cwilt.search.search.SearchState;import org.cwilt.search.utils.basic.Heapable;
+import java.util.List;
+
+import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.utils.basic.Heapable;
 public class AutoQueueSearchNode extends SearchState implements Heapable{
 	private final SearchToAutoQueue problem;
 	private final AutoQueueSearchNode parent;

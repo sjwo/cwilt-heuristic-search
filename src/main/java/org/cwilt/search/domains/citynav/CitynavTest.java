@@ -1,7 +1,8 @@
-package org.cwilt.search.domains.citynav;
+package org.cwilt.search.domains.citynav;
 import org.junit.Test;
 
-import org.cwilt.search.search.SearchState;import org.cwilt.search.search.SearchState.Child;
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.SearchState.Child;
 public class CitynavTest {
 	Citynav cn = new Citynav(150, 150, 5, 5, 100, 1);
 	@Test

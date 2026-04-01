@@ -1,5 +1,9 @@
-package org.cwilt.search.domains.multiagent.solvers.queue;
-import java.util.List;import org.cwilt.search.domains.multiagent.problem.Agent;import org.cwilt.search.domains.multiagent.problem.MultiagentTask;import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
+package org.cwilt.search.domains.multiagent.solvers.queue;
+import java.util.List;
+
+import org.cwilt.search.domains.multiagent.problem.Agent;
+import org.cwilt.search.domains.multiagent.problem.MultiagentTask;
+import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
 public class ExitQueue extends AgentQueue {
 
 	public ExitQueue(MultiagentVertex t) {

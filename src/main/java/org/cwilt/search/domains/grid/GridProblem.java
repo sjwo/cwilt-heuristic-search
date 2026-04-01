@@ -6,7 +6,7 @@
  * 
  */
 
-package org.cwilt.search.domains.grid;
+package org.cwilt.search.domains.grid;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -44,7 +44,7 @@ import javax.swing.JPanel;
 import org.cwilt.search.search.Limit;
 import org.cwilt.search.search.SearchAlgorithm;
 import org.cwilt.search.search.SearchProblem;
-import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.SearchState;
 public class GridProblem extends JPanel implements SearchProblem {
 
 	/**

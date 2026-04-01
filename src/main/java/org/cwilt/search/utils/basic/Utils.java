@@ -5,7 +5,7 @@
  *         Artificial Intelligence Research Group
  * 
  */
-package org.cwilt.search.utils.basic;
+package org.cwilt.search.utils.basic;
 import java.util.ArrayList;
 
 public class Utils {

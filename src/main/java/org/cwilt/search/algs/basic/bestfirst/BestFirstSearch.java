@@ -5,7 +5,7 @@
  *         Artificial Intelligence Research Group
  * 
  */
-package org.cwilt.search.algs.basic.bestfirst;
+package org.cwilt.search.algs.basic.bestfirst;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
 
-import org.cwilt.search.search.SearchAlgorithm;import org.cwilt.search.search.SearchNode;import org.cwilt.search.search.SearchState;import org.cwilt.search.search.Solution;import org.cwilt.search.utils.basic.Heapable;
+import org.cwilt.search.search.SearchAlgorithm;
+import org.cwilt.search.search.SearchNode;
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.Solution;
+import org.cwilt.search.utils.basic.Heapable;
 public abstract class BestFirstSearch extends org.cwilt.search.search.SearchAlgorithm {
 	private int vascilation = 0;
 	private double lastBest = Double.MAX_VALUE;

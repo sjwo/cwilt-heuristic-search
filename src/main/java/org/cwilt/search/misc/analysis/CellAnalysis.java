@@ -1,7 +1,7 @@
-package org.cwilt.search.misc.analysis;
+package org.cwilt.search.misc.analysis;
 import java.util.ArrayList;
 
-import org.cwilt.search.utils.basic.Utils;
+import org.cwilt.search.utils.basic.Utils;
 public class CellAnalysis {
 	
 	private final ArrayList<Float> coreSize;

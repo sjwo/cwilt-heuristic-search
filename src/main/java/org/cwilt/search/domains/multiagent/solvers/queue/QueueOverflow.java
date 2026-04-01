@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.multiagent.solvers.queue;
+package org.cwilt.search.domains.multiagent.solvers.queue;
 public class QueueOverflow extends Exception{
 
 	/**

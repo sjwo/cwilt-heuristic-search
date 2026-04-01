@@ -5,10 +5,10 @@
  *         Artificial Intelligence Research Group
  * 
  */
-package org.cwilt.search.domains.grid;
+package org.cwilt.search.domains.grid;
 import java.util.ArrayList;
 
-import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.SearchState;
 public class GridState extends SearchState {
 
 	public GridState clone() {

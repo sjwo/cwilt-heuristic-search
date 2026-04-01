@@ -1,8 +1,14 @@
-package org.cwilt.search.domains.kiva.drive;
+package org.cwilt.search.domains.kiva.drive;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Random;import org.cwilt.search.domains.kiva.map.GridCell;import org.cwilt.search.domains.kiva.path.simplified.SimpleMove;import org.cwilt.search.domains.kiva.path.timeless.NavigationProblem;import org.cwilt.search.domains.kiva.problem.KivaProblem;import org.cwilt.search.search.SearchState.Child;
+import java.util.Random;
+
+import org.cwilt.search.domains.kiva.map.GridCell;
+import org.cwilt.search.domains.kiva.path.simplified.SimpleMove;
+import org.cwilt.search.domains.kiva.path.timeless.NavigationProblem;
+import org.cwilt.search.domains.kiva.problem.KivaProblem;
+import org.cwilt.search.search.SearchState.Child;
 public class DFSRandomWalk implements Comparator<Child>{
 	private final SimpleMove start;
 	private final int length;

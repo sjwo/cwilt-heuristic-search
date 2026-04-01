@@ -1,9 +1,13 @@
-package org.cwilt.search.domains.multiagent.solvers.autoqueue;
+package org.cwilt.search.domains.multiagent.solvers.autoqueue;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import org.cwilt.search.search.SearchState;import org.cwilt.search.domains.kiva.map.GridCell;import org.cwilt.search.domains.multiagent.problem.Agent;import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;import org.cwilt.search.domains.multiagent.problem.ReservationTable;
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.domains.kiva.map.GridCell;
+import org.cwilt.search.domains.multiagent.problem.Agent;
+import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
+import org.cwilt.search.domains.multiagent.problem.ReservationTable;
 public class SearchToAutoQueue implements org.cwilt.search.search.SearchProblem {
 	public final boolean waitAtStart;
 

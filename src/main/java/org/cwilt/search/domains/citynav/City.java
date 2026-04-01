@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.citynav;
+package org.cwilt.search.domains.citynav;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Arrays;

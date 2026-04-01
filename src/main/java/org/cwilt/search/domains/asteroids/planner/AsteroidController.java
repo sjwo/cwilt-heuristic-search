@@ -1,5 +1,8 @@
-package org.cwilt.search.domains.asteroids.planner;
-import org.cwilt.search.domains.asteroids.AsteroidProblem;import org.cwilt.search.domains.asteroids.Asteroids;import org.cwilt.search.domains.asteroids.planner.AsteroidPlanner.CrashedShip;import org.cwilt.search.domains.asteroids.planner.AsteroidPlanner.SolverTimeout;
+package org.cwilt.search.domains.asteroids.planner;
+import org.cwilt.search.domains.asteroids.AsteroidProblem;
+import org.cwilt.search.domains.asteroids.Asteroids;
+import org.cwilt.search.domains.asteroids.planner.AsteroidPlanner.CrashedShip;
+import org.cwilt.search.domains.asteroids.planner.AsteroidPlanner.SolverTimeout;
 public class AsteroidController {
 	
 	public static void exitFail(){

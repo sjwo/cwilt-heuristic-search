@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.multiagent.solvers;
+package org.cwilt.search.domains.multiagent.solvers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +7,17 @@ import java.util.ListIterator;
 import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
-import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchProblem;import org.cwilt.search.search.SearchState;import org.cwilt.search.algs.basic.bestfirst.AStar;import org.cwilt.search.domains.multiagent.problem.Agent;import org.cwilt.search.domains.multiagent.problem.AgentState;import org.cwilt.search.domains.multiagent.problem.MultiagentProblem;import org.cwilt.search.domains.multiagent.problem.MultiagentTask;import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;import org.cwilt.search.domains.multiagent.solvers.queue.AgentQueue;import org.cwilt.search.domains.multiagent.solvers.queue.EntryQueue;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchProblem;
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.algs.basic.bestfirst.AStar;
+import org.cwilt.search.domains.multiagent.problem.Agent;
+import org.cwilt.search.domains.multiagent.problem.AgentState;
+import org.cwilt.search.domains.multiagent.problem.MultiagentProblem;
+import org.cwilt.search.domains.multiagent.problem.MultiagentTask;
+import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
+import org.cwilt.search.domains.multiagent.solvers.queue.AgentQueue;
+import org.cwilt.search.domains.multiagent.solvers.queue.EntryQueue;
 public class GhostQueueSolver extends org.cwilt.search.domains.multiagent.solvers.MultiagentSolver {
 	HashMap<MultiagentVertex, GhostAgentQueue> queues = new HashMap<MultiagentVertex, GhostAgentQueue>();
 	PriorityQueue<Agent> agents;

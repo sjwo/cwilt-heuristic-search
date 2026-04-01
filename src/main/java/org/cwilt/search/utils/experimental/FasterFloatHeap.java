@@ -1,4 +1,4 @@
-package org.cwilt.search.utils.experimental;
+package org.cwilt.search.utils.experimental;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -8,7 +8,9 @@ import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.Random;
 
-import org.cwilt.search.utils.basic.FloatHistogram;import org.cwilt.search.utils.basic.Heapable;import org.cwilt.search.utils.basic.MinHeap;
+import org.cwilt.search.utils.basic.FloatHistogram;
+import org.cwilt.search.utils.basic.Heapable;
+import org.cwilt.search.utils.basic.MinHeap;
 public class FasterFloatHeap<T extends BinHeapable> implements Queue<T> {
 	private static final int POINTERSTACK = 23;
 	private static final int RANDOMSEED = 33333;

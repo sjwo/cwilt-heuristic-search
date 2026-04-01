@@ -5,10 +5,13 @@
  *         Artificial Intelligence Research Group
  * 
  */
-package org.cwilt.search.algs.basic.bestfirst;
+package org.cwilt.search.algs.basic.bestfirst;
 
 
-import org.cwilt.search.search.SearchAlgorithm;import org.cwilt.search.search.SearchNode;import org.cwilt.search.search.Solution;import org.cwilt.search.utils.basic.MinHeap;
+import org.cwilt.search.search.SearchAlgorithm;
+import org.cwilt.search.search.SearchNode;
+import org.cwilt.search.search.Solution;
+import org.cwilt.search.utils.basic.MinHeap;
 
 public class WAStar extends BestFirstSearch {
 

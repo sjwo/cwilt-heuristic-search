@@ -1,10 +1,10 @@
-package org.cwilt.search.domains.hanoi;
+package org.cwilt.search.domains.hanoi;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.SearchState;
 public class HanoiState extends SearchState {
 	private static int highestBit(long v) {
 		if (v == 0)
@@ -119,7 +119,9 @@ public class HanoiState extends SearchState {
 	}
 
 	/**
-	 * @param prob 	 * @param seed 	 * @return a randomly generated towers of hanoi state
+	 * @param prob 
+	 * @param seed 
+	 * @return a randomly generated towers of hanoi state
 	 */
 	public static HanoiState randomState(HanoiProblem prob, int seed) {
 		Random r = new Random(seed);

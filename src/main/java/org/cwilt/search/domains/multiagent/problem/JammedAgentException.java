@@ -1,4 +1,5 @@
-package org.cwilt.search.domains.multiagent.problem;/**
+package org.cwilt.search.domains.multiagent.problem;
+/**
  * Exception that is thrown if an agent is jammed inbetween two other agents
  * @author chris
  *

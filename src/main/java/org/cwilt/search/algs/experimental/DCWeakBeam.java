@@ -1,8 +1,9 @@
-package org.cwilt.search.algs.experimental;
+package org.cwilt.search.algs.experimental;
 import java.io.PrintStream;
 import java.util.HashMap;
 
-import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchNode;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchNode;
 public class DCWeakBeam extends WeakBeam{
 
 	private HashMap<Object, SearchNode> globalClosed;

@@ -1,6 +1,9 @@
-package org.cwilt.search.domains.multiagent.solvers.queue;
+package org.cwilt.search.domains.multiagent.solvers.queue;
 import java.util.HashMap;
-import java.util.LinkedList;import org.cwilt.search.domains.multiagent.problem.Agent;import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
+import java.util.LinkedList;
+
+import org.cwilt.search.domains.multiagent.problem.Agent;
+import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
 public class EntryQueue extends AgentQueue{
 	
 	private final HashMap<MultiagentVertex, Double> distances = new HashMap<MultiagentVertex, Double>();

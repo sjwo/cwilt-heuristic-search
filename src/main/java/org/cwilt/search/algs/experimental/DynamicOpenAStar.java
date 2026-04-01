@@ -1,8 +1,16 @@
-package org.cwilt.search.algs.experimental;
+package org.cwilt.search.algs.experimental;
 import java.io.PrintStream;
 import java.util.Queue;
 
-import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchAlgorithm;import org.cwilt.search.search.SearchNode;import org.cwilt.search.search.SearchProblem;import org.cwilt.search.search.Solution;import org.cwilt.search.utils.basic.Heapable;import org.cwilt.search.utils.basic.MinHeap;import org.cwilt.search.utils.experimental.FastFloatHeap;import org.cwilt.search.algs.basic.bestfirst.BestFirstSearch;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchAlgorithm;
+import org.cwilt.search.search.SearchNode;
+import org.cwilt.search.search.SearchProblem;
+import org.cwilt.search.search.Solution;
+import org.cwilt.search.utils.basic.Heapable;
+import org.cwilt.search.utils.basic.MinHeap;
+import org.cwilt.search.utils.experimental.FastFloatHeap;
+import org.cwilt.search.algs.basic.bestfirst.BestFirstSearch;
 public class DynamicOpenAStar extends BestFirstSearch{
 
 	public DynamicOpenAStar(SearchProblem initial, Limit l) {

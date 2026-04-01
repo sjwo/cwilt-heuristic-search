@@ -1,11 +1,15 @@
-package org.cwilt.search.utils.experimental;
+package org.cwilt.search.utils.experimental;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-import org.cwilt.search.utils.basic.MinHeap;import org.cwilt.search.utils.basic.PairingHeap;import org.cwilt.search.utils.experimental.BinHeapTest.BHT;import org.cwilt.search.utils.floats.FloatRadixHeap;import org.cwilt.search.utils.floats.RadixHeap;
+import org.cwilt.search.utils.basic.MinHeap;
+import org.cwilt.search.utils.basic.PairingHeap;
+import org.cwilt.search.utils.experimental.BinHeapTest.BHT;
+import org.cwilt.search.utils.floats.FloatRadixHeap;
+import org.cwilt.search.utils.floats.RadixHeap;
 public class PQTimer {
 	private static final String[] choices = { "h", "ll", "al", "ph", "ffh",
 			"drh", "frh", "ffh2" };

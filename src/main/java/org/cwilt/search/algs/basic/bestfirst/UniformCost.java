@@ -1,5 +1,8 @@
-package org.cwilt.search.algs.basic.bestfirst;
-import org.cwilt.search.search.SearchAlgorithm;import org.cwilt.search.search.SearchNode;import org.cwilt.search.search.Solution;import org.cwilt.search.utils.basic.MinHeap;
+package org.cwilt.search.algs.basic.bestfirst;
+import org.cwilt.search.search.SearchAlgorithm;
+import org.cwilt.search.search.SearchNode;
+import org.cwilt.search.search.Solution;
+import org.cwilt.search.utils.basic.MinHeap;
 public class UniformCost extends BestFirstSearch {
 
 	public SearchAlgorithm clone(){

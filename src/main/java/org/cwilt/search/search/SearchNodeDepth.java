@@ -5,7 +5,7 @@
  *         Artificial Intelligence Research Group
  * 
  */
-package org.cwilt.search.search;
+package org.cwilt.search.search;
 import java.util.ArrayList;
 import java.util.Iterator;
 

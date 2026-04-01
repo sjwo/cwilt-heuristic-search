@@ -1,7 +1,17 @@
-package org.cwilt.search.domains.multiagent.solvers.autoqueue;
+package org.cwilt.search.domains.multiagent.solvers.autoqueue;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.PriorityQueue;import org.cwilt.search.domains.kiva.SearchTracker;import org.cwilt.search.domains.kiva.map.GridCell;import org.cwilt.search.domains.multiagent.problem.Agent;import org.cwilt.search.domains.multiagent.problem.AgentState;import org.cwilt.search.domains.multiagent.problem.MultiagentProblem;import org.cwilt.search.domains.multiagent.problem.MultiagentTask;import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;import org.cwilt.search.domains.multiagent.solvers.MultiagentSolver;import org.cwilt.search.domains.multiagent.solvers.queue.QueueOverflow;
+import java.util.PriorityQueue;
+
+import org.cwilt.search.domains.kiva.SearchTracker;
+import org.cwilt.search.domains.kiva.map.GridCell;
+import org.cwilt.search.domains.multiagent.problem.Agent;
+import org.cwilt.search.domains.multiagent.problem.AgentState;
+import org.cwilt.search.domains.multiagent.problem.MultiagentProblem;
+import org.cwilt.search.domains.multiagent.problem.MultiagentTask;
+import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
+import org.cwilt.search.domains.multiagent.solvers.MultiagentSolver;
+import org.cwilt.search.domains.multiagent.solvers.queue.QueueOverflow;
 public class AutoQueueSolver extends MultiagentSolver {
 	boolean[] finished;
 

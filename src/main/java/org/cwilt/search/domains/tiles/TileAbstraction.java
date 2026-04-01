@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.tiles;
+package org.cwilt.search.domains.tiles;
 import java.io.Serializable;
 import java.util.BitSet;
 

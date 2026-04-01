@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.tiles;
+package org.cwilt.search.domains.tiles;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -11,7 +11,8 @@ import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Random;
 
-import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchState;
 public class TileProblem implements org.cwilt.search.search.SearchProblem, Serializable{
 	
 	/**
@@ -170,7 +171,10 @@ public class TileProblem implements org.cwilt.search.search.SearchProblem, Seria
 	}
 
 	/**
-	 * Makes a goal	 * @param across 	 * @param down 	 * @param cost 
+	 * Makes a goal
+	 * @param across 
+	 * @param down 
+	 * @param cost 
 	 */
 	public TileProblem(int across, int down, String cost) {
 		if (cost != null && cost.equals("inverse"))
@@ -263,7 +267,9 @@ public class TileProblem implements org.cwilt.search.search.SearchProblem, Seria
 
 	/**
 	 * @param path
-	 *            string for the path from which to load the tile problem	 * @param cost 	 * @param pdbArgs 
+	 *            string for the path from which to load the tile problem
+	 * @param cost 
+	 * @param pdbArgs 
 	 * @throws IOException
 	 *             if the path can't be read from
 	 * @throws ClassNotFoundException 

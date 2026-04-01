@@ -1,5 +1,6 @@
-package org.cwilt.search.domains.multiagent.solvers.queue;
-import org.cwilt.search.domains.multiagent.problem.Agent;import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
+package org.cwilt.search.domains.multiagent.solvers.queue;
+import org.cwilt.search.domains.multiagent.problem.Agent;
+import org.cwilt.search.domains.multiagent.problem.MultiagentVertex;
 public final class ArrivingAgent implements Comparable<ArrivingAgent> {
 	public String toString() {
 		StringBuffer b = new StringBuffer();

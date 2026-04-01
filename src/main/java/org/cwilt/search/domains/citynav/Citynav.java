@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.citynav;
+package org.cwilt.search.domains.citynav;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -23,7 +23,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import org.cwilt.search.search.Limit;import org.cwilt.search.search.SearchAlgorithm;import org.cwilt.search.search.SearchProblem;import org.cwilt.search.search.SearchState;import org.cwilt.search.search.SearchState.Child;
+import org.cwilt.search.search.Limit;
+import org.cwilt.search.search.SearchAlgorithm;
+import org.cwilt.search.search.SearchProblem;
+import org.cwilt.search.search.SearchState;
+import org.cwilt.search.search.SearchState.Child;
 public class Citynav extends JPanel implements SearchProblem {
 
 	private double[][] allPairs;

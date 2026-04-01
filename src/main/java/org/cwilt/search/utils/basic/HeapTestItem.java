@@ -5,11 +5,11 @@
  *         Artificial Intelligence Research Group
  * 
  */
-package org.cwilt.search.utils.basic;
+package org.cwilt.search.utils.basic;
 import java.util.Comparator;
 import java.util.Random;
 
-import org.cwilt.search.utils.experimental.BinHeapable;
+import org.cwilt.search.utils.experimental.BinHeapable;
 public class HeapTestItem implements BinHeapable, Cloneable {
 
 	public Object clone(){

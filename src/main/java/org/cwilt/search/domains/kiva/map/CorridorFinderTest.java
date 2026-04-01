@@ -1,4 +1,4 @@
-package org.cwilt.search.domains.kiva.map;
+package org.cwilt.search.domains.kiva.map;
 import org.junit.Test;
 
 public class CorridorFinderTest {

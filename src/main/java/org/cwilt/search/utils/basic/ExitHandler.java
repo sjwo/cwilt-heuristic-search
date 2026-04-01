@@ -5,7 +5,7 @@
  *         Artificial Intelligence Research Group
  * 
  */
-package org.cwilt.search.utils.basic;
+package org.cwilt.search.utils.basic;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

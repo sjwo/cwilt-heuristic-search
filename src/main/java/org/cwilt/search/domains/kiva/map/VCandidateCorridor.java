@@ -1,5 +1,7 @@
-package org.cwilt.search.domains.kiva.map;
-import java.util.List;import org.cwilt.search.domains.kiva.map.CorridorFinder.DIRECTION;
+package org.cwilt.search.domains.kiva.map;
+import java.util.List;
+
+import org.cwilt.search.domains.kiva.map.CorridorFinder.DIRECTION;
 
 public class VCandidateCorridor extends CandidateCorridor{
 

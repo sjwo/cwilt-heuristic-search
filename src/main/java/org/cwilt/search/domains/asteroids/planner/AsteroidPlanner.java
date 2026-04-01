@@ -1,5 +1,7 @@
-package org.cwilt.search.domains.asteroids.planner;
-import java.util.ArrayList;import org.cwilt.search.domains.asteroids.AsteroidProblem;
+package org.cwilt.search.domains.asteroids.planner;
+import java.util.ArrayList;
+
+import org.cwilt.search.domains.asteroids.AsteroidProblem;
 public abstract class AsteroidPlanner {
 	private long maxStepTime = 0l;
 
