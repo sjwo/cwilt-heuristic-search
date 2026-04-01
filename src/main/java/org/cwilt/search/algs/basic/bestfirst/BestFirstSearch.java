@@ -6,6 +6,7 @@
  * 
  */
 package org.cwilt.search.algs.basic.bestfirst;
+
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,19 +20,20 @@ import org.cwilt.search.search.SearchNode;
 import org.cwilt.search.search.SearchState;
 import org.cwilt.search.search.Solution;
 import org.cwilt.search.utils.basic.Heapable;
+
 public abstract class BestFirstSearch extends org.cwilt.search.search.SearchAlgorithm {
 	private int vascilation = 0;
 	private double lastBest = Double.MAX_VALUE;
-	
-	protected double evaluateNode(SearchNode n){
+
+	protected double evaluateNode(SearchNode n) {
 		return n.getF();
 	}
-	
+
 	public void reset() {
 		closed.clear();
 		open.clear();
 	}
-	
+
 	protected final HashMap<Object, SearchNode> closed;
 	protected Queue<SearchNode> open;
 
@@ -63,17 +65,17 @@ public abstract class BestFirstSearch extends org.cwilt.search.search.SearchAlgo
 		}
 	}
 
-//	private java.util.HashSet<Object> expanded = new java.util.HashSet<Object>();
-	
+	// private java.util.HashSet<Object> expanded = new java.util.HashSet<Object>();
+
 	protected Solution processNode(SearchNode current) {
 		double nextValue = evaluateNode(current);
-		if(nextValue <= lastBest)
+		if (nextValue <= lastBest)
 			lastBest = nextValue;
-		else if (nextValue - lastBest > 0.00000001){
-			vascilation ++;
+		else if (nextValue - lastBest > 0.00000001) {
+			vascilation++;
 			lastBest = nextValue;
 		}
-		
+
 		if (current.getState().isGoal()) {
 			if (getIncumbent() == null
 					|| getIncumbent().getCost() > current.getG())
@@ -84,49 +86,51 @@ public abstract class BestFirstSearch extends org.cwilt.search.search.SearchAlgo
 			ArrayList<? extends SearchNode> children = current.expand();
 			l.incrExp();
 			int max = children.size();
-			
-//			if(expanded.contains(current.getState().getKey())){
-//				l.incrReExp();
-//			} else {
-//				expanded.add(current.getState().getKey());
-//			}
-			
+
+			// if(expanded.contains(current.getState().getKey())){
+			// l.incrReExp();
+			// } else {
+			// expanded.add(current.getState().getKey());
+			// }
+
 			l.incrGen(max);
-			for(int i = 0; i < max; i++){
+			for (int i = 0; i < max; i++) {
 				considerChild(children.get(i));
 			}
-//			Iterator<? extends SearchNode> childIter = children.iterator();
-//			while (childIter.hasNext()) {
-//				l.incrGen();
-//				considerChild(childIter.next());
-//			}
+			// Iterator<? extends SearchNode> childIter = children.iterator();
+			// while (childIter.hasNext()) {
+			// l.incrGen();
+			// considerChild(childIter.next());
+			// }
 		}
 		return null;
 	}
-	
+
 	protected abstract boolean solutionGoodEnough();
-	
+
 	protected void setIncumbent() {
 		l.startClock();
 		Solution goal = null;
 		while (!open.isEmpty() && goal == null && l.keepGoing() && !solutionGoodEnough()) {
 			SearchNode current = open.poll();
 			assert (current != null);
-			assert(current.getHeapIndex() == Heapable.NO_POS);
-			
+			assert (current.getHeapIndex() == Heapable.NO_POS);
+
+			System.out.println("==============================\nbest-first selected from open:\n" + current
+					+ "==============================");
+
 			goal = processNode(current);
-//			boolean cc = closedCheck();
-//			if(!cc){
-//				System.err.println(current);
-//				assert(false);
-//			}
+			// boolean cc = closedCheck();
+			// if(!cc){
+			// System.err.println(current);
+			// assert(false);
+			// }
 		}
 		l.endClock();
 		if (goal != null)
 			setIncumbent(goal);
 	}
 
-	
 	@SuppressWarnings("unused")
 	private boolean closedCheck() {
 		Iterator<Entry<Object, SearchNode>> i = closed.entrySet().iterator();
@@ -164,7 +168,7 @@ public abstract class BestFirstSearch extends org.cwilt.search.search.SearchAlgo
 			}
 			open.add(child);
 			SearchNode r = closed.remove(incumbentNode.getState().getKey());
-			//have to put this back on the closed list
+			// have to put this back on the closed list
 			closed.put(child.getState().getKey(), child);
 			assert (r.getHeapIndex() == Heapable.NO_POS);
 			assert (r != null);
@@ -189,11 +193,11 @@ public abstract class BestFirstSearch extends org.cwilt.search.search.SearchAlgo
 	}
 
 	@Override
-	public void printExtraData(PrintStream ps){
+	public void printExtraData(PrintStream ps) {
 		super.printExtraData(ps);
 		SearchAlgorithm.printPair(ps, "vascilations", this.vascilation);
 	}
-	
+
 	protected void cleanup() {
 		open.clear();
 		closed.clear();

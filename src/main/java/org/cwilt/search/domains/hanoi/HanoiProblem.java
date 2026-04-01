@@ -1,4 +1,5 @@
 package org.cwilt.search.domains.hanoi;
+
 /**
  * 
  * --time 600.000000 --probargs /home/aifs2/cmo66/cjava/santa/hanoipdb9  --type hanoi --problem /home/aifs2/group/data/hanoi/instance/4/12/2 --alg astar --rest 0
@@ -14,10 +15,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.cwilt.search.search.SearchState;
 import org.cwilt.search.search.SearchState.Child;
 import org.cwilt.search.utils.TemporaryLoadAndWritePath;
+
 public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 	final int nDisks;
 	final int nPegs;
@@ -40,6 +43,7 @@ public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 	}
 
 	public final static HanoiProblem randomProblem(HanoiProblem parent, int seed) {
+		System.out.println("HanoiProblem: randomProblem");
 		return new HanoiProblem(parent, HanoiState.randomState(parent, seed));
 	}
 
@@ -71,6 +75,7 @@ public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 
 	public HanoiProblem(int nPegs, int nDisks, double[] costs, String[] pdbArgs)
 			throws ClassNotFoundException {
+		System.out.println("HanoiProblem(int nPegs, int nDisks, double[] costs, String[] pdbArgs)");
 		this.nPegs = nPegs;
 		this.nDisks = nDisks;
 		initial = HanoiState.makeGoal(this);
@@ -86,6 +91,7 @@ public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 
 	public HanoiProblem(int nPegs, int nDisks, double[] costs,
 			HanoiPDB[] pdbArgs) {
+		System.out.println("HanoiProblem(int nPegs, int nDisks, double[] costs, HanoiPDB[] pdbArgs)");
 		this.nPegs = nPegs;
 		this.nDisks = nDisks;
 		initial = HanoiState.makeGoal(this);
@@ -96,7 +102,7 @@ public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 
 		assert (this.nDisks == costs.length);
 		this.pdbs = pdbArgs;
-		
+
 		int bottomDisk = 0;
 		for (int i = 0; i < pdbArgs.length; i++) {
 			abs[i] = new HanoiAbstraction(bottomDisk, pdbs[i].getnDisks());
@@ -106,6 +112,7 @@ public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 	}
 
 	public HanoiProblem(HanoiProblem p, HanoiState initial) {
+		System.out.println("HanoiProblem((HanoiProblem p, HanoiState initial)");
 		this.nDisks = p.nDisks;
 		this.nPegs = p.nPegs;
 		this.initial = initial;
@@ -117,15 +124,28 @@ public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 		this.initInverses();
 	}
 
+	// THIS ONE
 	public HanoiProblem(String path, String costString, String[] pdbArgs)
 			throws IOException, ClassNotFoundException {
+		System.out.println("HanoiProblem(String path, String costString, String[] pdbArgs)");
+		System.out.println("path: " + path);
+		System.out.println("costString: " + costString);
+		System.out.println("pdbArgs: " + Arrays.toString(pdbArgs));
 		FileInputStream fs = new FileInputStream(path);
 		DataInputStream ds = new DataInputStream(fs);
 		BufferedReader br = new BufferedReader(new InputStreamReader(ds));
-		pdbs = new HanoiPDB[pdbArgs.length];
-		abs = new HanoiAbstraction[pdbArgs.length];
+		// use simple heuristic instead of pdb
+		if (pdbArgs.length == 1 && Integer.parseInt(pdbArgs[0]) == 0) {
+			System.out.println("HanoiProblem.pdbs <- null");
+			pdbs = null;
+			abs = null;
+		} else {
+			System.out.println("HanoiProblem.pdbs <- HanoiPDB[" + pdbArgs.length + "]");
+			pdbs = new HanoiPDB[pdbArgs.length];
+			abs = new HanoiAbstraction[pdbArgs.length];
 
-		initPDBS(pdbArgs);
+			initPDBS(pdbArgs);
+		}
 
 		String nextLine = br.readLine();
 		this.nPegs = Integer.parseInt(nextLine);
@@ -144,6 +164,7 @@ public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 
 	public HanoiProblem(String path, String costString, HanoiPDB[] pdbs)
 			throws IOException {
+		System.out.println("HanoiProblem(String path, String costString, HanoiPDB[] pdbs)");
 		FileInputStream fs = new FileInputStream(path);
 		DataInputStream ds = new DataInputStream(fs);
 		BufferedReader br = new BufferedReader(new InputStreamReader(ds));
@@ -230,29 +251,42 @@ public class HanoiProblem implements org.cwilt.search.search.SearchProblem {
 		}
 
 		double h = 0;
-		for (int i = 0; i < pdbs.length; i++) {
-			if (abs[i] == null)
-				continue;
-			Object abstractedState = abs[i].abstractState(hanoiState);
-			h += pdbs[i].getH(abstractedState);
+		if (pdbs != null) {
+			for (int i = 0; i < pdbs.length; i++) {
+				if (abs[i] == null)
+					continue;
+				Object abstractedState = abs[i].abstractState(hanoiState);
+				h += pdbs[i].getH(abstractedState);
+			}
+		} else {
+			// simple heuristic: number of disks not on goal peg
+			// TODO: provide for non-unit cost
+			h = this.calculateD(hanoiState);
 		}
-
 		return h;
 	}
 
 	public int calculateD(HanoiState hanoiState) {
+		System.out.println("HanoiProblem: calculateD");
 		if (disjointPDB != null) {
 			return disjointPDB.getD(hanoiState);
 		}
 		int h = 0;
-		for (int i = 0; i < pdbs.length; i++) {
-			if (abs[i] == null)
-				continue;
-			Object abstractedState = abs[i].abstractState(hanoiState);
-			h += pdbs[i].getD(abstractedState);
-		}
+		if (this.pdbs != null) {
+			for (int i = 0; i < pdbs.length; i++) {
+				if (abs[i] == null)
+					continue;
+				Object abstractedState = abs[i].abstractState(hanoiState);
+				h += pdbs[i].getD(abstractedState);
+			}
 
-		return h;
+			return h;
+		} else {
+			int n_disks_on_goal_peg = hanoiState.countDisksOnPeg(0);
+			int d = this.nDisks - n_disks_on_goal_peg;
+			System.out.println("HanoiProblem: calculateD -- with simple heuristic = " + d);
+			return d;
+		}
 	}
 
 	@Override

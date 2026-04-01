@@ -1,10 +1,12 @@
 package org.cwilt.search.domains.hanoi;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 import org.cwilt.search.search.SearchState;
+
 public class HanoiState extends SearchState {
 	private static int highestBit(long v) {
 		if (v == 0)
@@ -54,14 +56,13 @@ public class HanoiState extends SearchState {
 		int movingDisk = topDisks[startPeg];
 		if (movingDisk < topDisks[endPeg])
 			return false;
-		
-//		int parentStartPeg = parentIndex / problem.nPegs;
+
+		// int parentStartPeg = parentIndex / problem.nPegs;
 		int parentEndPeg = parentIndex % problem.nPegs;
-		
-		
-		if(parentEndPeg == startPeg)
+
+		if (parentEndPeg == startPeg)
 			return false;
-		
+
 		if (lastOperator >= 0) {
 			int inverse = this.inverseChild(lastOperator);
 			if (getOperator(startPeg, endPeg) == inverse)
@@ -119,8 +120,8 @@ public class HanoiState extends SearchState {
 	}
 
 	/**
-	 * @param prob 
-	 * @param seed 
+	 * @param prob
+	 * @param seed
 	 * @return a randomly generated towers of hanoi state
 	 */
 	public static HanoiState randomState(HanoiProblem prob, int seed) {
@@ -223,24 +224,29 @@ public class HanoiState extends SearchState {
 
 	@Override
 	public ArrayList<Child> expand() {
+		// System.out.println("EXPANDING:\n" + this);
 		ArrayList<Child> children = new ArrayList<Child>();
 		for (int i = 0; i < pegs.pegs.length; i++) {
 			for (int j = 0; j < pegs.pegs.length; j++) {
-				if (canMove(i, j, this.lastOperator)){
+				if (canMove(i, j, this.lastOperator)) {
 					double cost = problem.getCost(topDisks[i]);
-					children.add(new Child(new HanoiState(this, i, j), cost));
+					HanoiState child = new HanoiState(this, i, j);
+					System.out.println("generating:\n" + child);
+					children.add(new Child(child, cost));
 				}
 			}
 		}
 		return children;
 	}
 
+	// goal: all disks on peg 0
 	@Override
 	public boolean isGoal() {
 		for (int i = 1; i < pegs.pegs.length; i++) {
 			if (pegs.pegs[i] != 0)
 				return false;
 		}
+		System.out.println("found goal:\n" + this);
 		return true;
 	}
 
@@ -284,7 +290,45 @@ public class HanoiState extends SearchState {
 		b.append(pegs.toString());
 		for (int i = 0; i < topDisks.length; i++)
 			b.append("Peg " + i + " " + topDisks[i] + "\n");
+		b.append("---------\n");
+		b.append(this.toStringFull());
 		return b.toString();
+	}
+
+	private String toStringFull() {
+		StringBuffer b = new StringBuffer();
+		for (int i = 0; i < this.problem.nPegs; i++)
+			b.append(i + ":" + pegToString(this.pegs.pegs[i]) + "\n");
+		return b.toString();
+	}
+
+	private String pegToString(long peg) {
+		StringBuffer b = new StringBuffer();
+		long mask = 1L;
+		for (int i = 0; i < this.problem.nDisks; i++) {
+			if (((peg & (mask << i)) >> i) == 1) {
+				int disk_id = diskIdFromPegBitArrayIndex(i, this.problem.nDisks);
+				b.append(" " + disk_id);
+			}
+
+		}
+		return b.toString();
+	}
+
+	private int diskIdFromPegBitArrayIndex(int index, int n_disks) {
+		return n_disks - index;
+	}
+
+	public int countDisksOnPeg(int pegID) {
+		int count = 0;
+		long mask = 1L;
+		for (int i = 0; i < this.problem.nDisks; i++) {
+			if (((this.pegs.pegs[pegID] & (mask << i)) >> i) == 1) {
+				count += 1;
+			}
+
+		}
+		return count;
 	}
 
 	public Object abstractState(int nDisks, int bottomDisk) {
@@ -299,26 +343,26 @@ public class HanoiState extends SearchState {
 		}
 		return new HanoiPegs(p);
 	}
-	
-	private int findPeg(int pegID){
+
+	private int findPeg(int pegID) {
 		long mask = 1l << pegID;
-		for(int i = 0; i < pegs.pegs.length; i++){
+		for (int i = 0; i < pegs.pegs.length; i++) {
 			long peg = pegs.pegs[i];
-			long anded = peg&mask;
-			if((anded) != 0l){
+			long anded = peg & mask;
+			if ((anded) != 0l) {
 				return i;
 			}
 		}
-		assert(false);
+		assert (false);
 		return -1;
 	}
-	
+
 	public Object abstractState(int[] disks) {
 		long[] p = new long[problem.nPegs];
-		
+
 		for (int i = 0; i < problem.nPegs; i++) {
 			long mask = 1l;
-			for(int disk : disks){
+			for (int disk : disks) {
 				// find out which peg this disk is on
 				int diskIndex = findPeg(disk);
 				p[diskIndex] |= mask;
@@ -328,12 +372,11 @@ public class HanoiState extends SearchState {
 		return new HanoiPegs(p);
 	}
 
-	
 	public ArrayList<Child> reverseExpand() {
 		ArrayList<Child> children = new ArrayList<Child>();
 		for (int i = 0; i < pegs.pegs.length; i++) {
 			for (int j = 0; j < pegs.pegs.length; j++) {
-				if (canReverseMove(i, j)){
+				if (canReverseMove(i, j)) {
 					double cost = problem.getCost(topDisks[i]);
 					children.add(new Child(new HanoiState(this, i, j), cost));
 				}
@@ -364,7 +407,7 @@ public class HanoiState extends SearchState {
 
 	@Override
 	public double convertToChild(int index, int parentIndex) {
-		
+
 		int startPeg = index / problem.nPegs;
 		int endPeg = index % problem.nPegs;
 		if (!this.canMove(startPeg, endPeg, parentIndex)) {
